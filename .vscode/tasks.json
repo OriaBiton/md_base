@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0",
+  "command": "npx nuxi typecheck",
+  "type": "shell",
+  "presentation": {
+      "reveal": "silent"
+  },
+  "problemMatcher": "$gulp-tsc"
+}

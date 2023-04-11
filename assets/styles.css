@@ -5,17 +5,6 @@
 
 :root {
   direction: rtl;
-  --primary: #3399ff;
-  --secondary: #1a6bbb;
-  --highlight: #f67036;
-  --bright: #d4e8ff;
-  --brightest: #f1fbff;
-  --dark: #607486;
-  --darkest: #4f5459;
-  --grey: #ededed;
-  --grad1: linear-gradient(147deg, var(--primary), #2585e4);
-  --good: rgb(37, 224, 137);
-  --danger: #F2603F;
 }
 
 html,

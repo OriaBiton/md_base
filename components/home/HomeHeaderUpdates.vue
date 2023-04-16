@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { Update } from '~~/types';
+import { Update } from '../../types';
 
 const UPDATES: Update[] = [
   {

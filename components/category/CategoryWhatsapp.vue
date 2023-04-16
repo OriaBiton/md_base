@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { DepartmentWhatsapp } from '~~/types';
+import { DepartmentWhatsapp } from '../../types';
 
 const props = defineProps<{
   whatsapp: DepartmentWhatsapp;

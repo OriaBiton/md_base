@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { Mikve } from '~~/types';
+import { Mikve } from '../types';
 
 defineProps<{
   mikve: Mikve;

@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { MenuLink } from '~~/types';
+import { MenuLink } from '../../types';
 
 defineProps<{
   icon: string;

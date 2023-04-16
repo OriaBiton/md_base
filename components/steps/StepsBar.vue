@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { Step } from '~~/types';
+import { Step } from '../../types';
 
 defineProps<{
   steps: Step[];

@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { MenuLink } from '~~/types';
+import { MenuLink } from '../../types';
 
 interface Item {
   icon: string;

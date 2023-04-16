@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { MenuLink, DepartmentContact, DepartmentMember, Location, DepartmentWhatsapp } from '@/types';
+import { MenuLink, DepartmentContact, DepartmentMember, Location, DepartmentWhatsapp } from '../../types';
 
 defineProps<{
   title: string;

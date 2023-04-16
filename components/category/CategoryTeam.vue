@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { DepartmentMember } from '~~/types';
+import { DepartmentMember } from '../../types';
 
 defineProps<{
   team: DepartmentMember[];

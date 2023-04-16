@@ -29,15 +29,15 @@
         <h3>משרדי המועצה</h3>
         <ul>
           <li>
-            <a :href="`tel:${PHONE_RAW}`">
+            <a :href="`tel:${phoneRaw}`">
               <Icon name="fa-solid:phone-alt" size="20" class="ml-1" />
-              {{ PHONE }}
+              {{ phone }}
             </a>
           </li>
           <li>
-            <a :href="`mailto:${EMAIL}`">
+            <a :href="`mailto:${email}`">
               <Icon name="fa-envelope" size="20" class="ml-1" />
-              {{ EMAIL }}
+              {{ email }}
             </a>
           </li>
         </ul>
@@ -48,7 +48,7 @@
           <nuxt-link to="/contact">
             <Icon name="fa-envelope" size="30" />
           </nuxt-link>
-          <a :href="`tel:${PHONE_RAW}`">
+          <a :href="`tel:${phoneRaw}`">
             <Icon name="fa-solid:phone-alt" size="30" />
           </a>
         </div>
@@ -63,7 +63,8 @@
 </template>
 
 <script setup lang="ts">
-import { EMAIL, PHONE, PHONE_RAW } from '~~/assets/constants';
+import { siteConfigInjectionKey } from '../assets/injection-keys';
+const { phone, phoneRaw, email } = inject(siteConfigInjectionKey)!;
 </script>
 
 <style scoped>

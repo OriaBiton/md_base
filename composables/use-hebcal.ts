@@ -1,5 +1,7 @@
+import { WEEK_DAYS } from "../assets/constants";
+import { siteConfigInjectionKey } from "../assets/injection-keys";
+
 const MINS_TO_SUNSET_AFTER_HADLAKA = 18;
-const WEEK_DAYS = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת'];
 
 const dayOfWeek = ref('');
 const parasha = ref('');
@@ -16,18 +18,17 @@ const sunset = computed(() => {
 });
 
 let isSet = false;
-let geoName: number;
 
 export default async function useHebcal() {
-  geoName = (useAppConfig() as any).GEO_NAME;
-  if (!isSet) await init();
+  const { geoName } = inject(siteConfigInjectionKey)!;
+  if (!isSet) await init(geoName);
   return { parasha, hadlaka, havdala, sunset, dayOfWeek, hebDate, isHoliday };
 }
 
-async function init() {
+async function init(geoName: number) {
   isSet = true;
   await initHebDate();
-  await initShabbat();
+  await initShabbat(geoName);
 }
 
 async function initHebDate() {
@@ -41,7 +42,7 @@ async function initHebDate() {
   hebDate.value = hebrew.replace(/[\u0591-\u05C7]/g, '');
 }
 
-async function initShabbat() {
+async function initShabbat(geoName: number) {
   const url = `https://www.hebcal.com/shabbat/?cfg=json&geonameid=${geoName}&m=50`;
   const { items } = await (await fetch(url)).json();
   for (const item of items){

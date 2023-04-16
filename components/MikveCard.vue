@@ -27,7 +27,7 @@
             מזמן הדלקת נרות עד שעה לאחר מכן.
           </span>
           <br>
-          <span>
+          <span v-if="!mikve.closedOnShabbatEnd">
             <strong>מוצאי שבת/חג</strong>
             <br>
             חצי שעה לאחר צאת השבת/חג עד כשלוש שעות לאחר מכן.

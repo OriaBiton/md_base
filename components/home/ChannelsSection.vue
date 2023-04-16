@@ -4,13 +4,13 @@
     <div class="container">
       <ul class="channels">
         <li class="phone">
-          <a :href="`tel:${PHONE}`" target="_blank" rel="noopener noreferrer">
+          <a :href="`tel:${phone}`" target="_blank" rel="noopener noreferrer">
             <span>טלפון</span>
             <Icon name="fa-solid:phone-alt" />
           </a>
         </li>
         <li class="email">
-          <a :href="`mailto:${EMAIL}`" target="_blank" rel="noopener noreferrer">
+          <a :href="`mailto:${email}`" target="_blank" rel="noopener noreferrer">
             <span>דוא"ל</span>
             <Icon name="fa-envelope" />
           </a>
@@ -27,7 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import { PHONE, EMAIL } from '~~/assets/constants';
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+const { phone, email } = inject(siteConfigInjectionKey)!;
 </script>
 
 <style scoped>

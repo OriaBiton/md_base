@@ -54,4 +54,5 @@ export interface Mikve {
   notes?: string;
   men?: boolean;
   closedOnWeekdays?: boolean;
+  closedOnShabbatEnd?: boolean;
 }

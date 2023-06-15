@@ -10,5 +10,5 @@
 </template>
 
 <script setup lang="ts">
-const { dayOfWeek, hebDate } = await useHebcal();
+const { dayOfWeek, hebDate } = useHebcal();
 </script>

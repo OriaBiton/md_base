@@ -3,7 +3,7 @@
     <a :href="`tel:${phoneRaw}`" target="_blank" rel="noopener">
       <img src="/images/phone.png" title="התקשרו אלינו" alt="אייקון טלפון">
     </a>
-    <a href="https://www.waze.com/en/live-map/directions/il/center-district/yavne/halilach-st-6?latlng=31.871266491546326%2C34.74526047706605&navigate=yes&reverse=yes&time=1668333600000" target="_blank" rel="noopener">
+    <a :href="location.navigationUrl" target="_blank" rel="noopener">
       <img src="/images/waze.png" title="ניווט" alt="אייקון ניווט באמצעות Waze">
     </a>
     <nuxt-link to="/contact">
@@ -13,7 +13,9 @@
 </template>
 
 <script setup lang="ts">
-const { phoneRaw } = useRuntimeConfig().public;
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+const { communication, location } = inject(siteConfigInjectionKey)!;
+const phoneRaw = phoneToRaw(communication.phone);
 </script>
 
 <style scoped>

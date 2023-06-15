@@ -14,7 +14,7 @@
           space-between="30"
           effect="fade"
         >
-          <SwiperSlide v-for="(update, i) in UPDATES" :key="i">
+          <SwiperSlide v-for="(update, i) in updates" :key="i">
             <HomeHeaderUpdate :update="update" />
           </SwiperSlide>
         </Swiper>
@@ -24,18 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { Update } from '../../types';
-
-const UPDATES: Update[] = [
-  {
-    title: "מכירת חמץ אונליין",
-    content: "הציבור מוזמן למכור את החמץ בטופס דיגיטלי כאן באתר",
-    date: "א' ניסן תשפ\"ג",
-    img: "/images/hametz-sale.jpeg",
-    link: "/kosher/hametz-sale",
-    linkText: "למילוי הטופס"
-  }
-];
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+const { updates } = inject(siteConfigInjectionKey)!.home;
 </script>
 
 <style scoped>

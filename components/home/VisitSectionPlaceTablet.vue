@@ -1,5 +1,5 @@
 <template>
-  <VisitSectionTablet type="place" header="הלילך 6, יבנה" body-icon="fa-solid:wheelchair" body-header="מידע בנושא נגישות">
+  <VisitSectionTablet type="place" :header="address" body-icon="fa-solid:wheelchair" body-header="מידע בנושא נגישות">
     <p>
       המקום מונגש לבעלי מוגבלויות. במידה ויש צורך בשירות פרונטלי ניתן ליצור קשר בשעות הפעילות ונציג המועצה יגיע לסייע.
     </p>
@@ -8,6 +8,11 @@
     </template>
   </VisitSectionTablet>
 </template>
+
+<script setup lang="ts">
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+const { address } = inject(siteConfigInjectionKey)!.location;
+</script>
 
 <style scoped>
 p {font-size: 1.4rem;}

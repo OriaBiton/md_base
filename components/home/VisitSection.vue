@@ -1,7 +1,7 @@
 <template>
   <section id="location">
     <HomeHeading>מיקום ושעות פעילות</HomeHeading>
-    <img src="/images/cloud.png" class="cloud" alt="ענן">
+    <img src="../../public/images/cloud.png" class="cloud" alt="ענן">
     <div class="tablets-wrapper container">
       <VisitSectionPlaceTablet />
       <VisitSectionTimeTablet />

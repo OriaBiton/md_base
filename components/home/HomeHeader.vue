@@ -2,8 +2,8 @@
   <img class="bg-img" src="/images/hero.jpeg">
   <div class="hero-wrapper">
     <div class="hero">
-      <h1 title="המועצה הדתית יבנה">
-        <img src="/images/logo.png" alt="לוגו מועצה" class="whiten">
+      <h1 :title="title">
+        <img src="/images/logo.png" alt="לוגו מועצה">
       </h1>
       <div class="header-buttons">
         <a href="#services" class="btn cta">שירותי המועצה</a>
@@ -14,6 +14,11 @@
   </div>
   <HomeHeaderWave />
 </template>
+
+<script setup lang="ts">
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+const { title } = inject(siteConfigInjectionKey)!;
+</script>
 
 <style scoped>
 header .bg-img{

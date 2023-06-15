@@ -2,7 +2,7 @@
   <div :class="{ visible: modelValue }" class="wrapper">
     <div class="header">
       <nuxt-link to="/">
-        <img src="/images/logo.png" alt="המועצה הדתית" class="whiten">
+        <img src="/images/logo.png" alt="לוגו המועצה הדתית" class="whiten">
       </nuxt-link>
       <div class="close" @click="$emit('update:modelValue', false)">✕</div>
     </div>

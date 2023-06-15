@@ -5,8 +5,8 @@
       <div>
         <h3>קישורים רלוונטיים</h3>
         <li>
-          <a href="https://www.yavne.muni.il/" target="_blank">
-            עיריית יבנה
+          <a :href="municipality.url" target="_blank">
+            {{ municipality.name }}
           </a>
         </li>
         <li>
@@ -55,7 +55,8 @@
       </div>
     </div>
     <p class="copyright">
-      כל הזכויות שמורות למועצה הדתית יבנה
+      {{ title }} -
+      כל הזכויות שמורות
       •
       All rights reserved © {{ new Date().getFullYear() }}
     </p>
@@ -64,7 +65,9 @@
 
 <script setup lang="ts">
 import { siteConfigInjectionKey } from '../assets/injection-keys';
-const { phone, phoneRaw, email } = inject(siteConfigInjectionKey)!;
+const { title, communication, municipality } = inject(siteConfigInjectionKey)!;
+const { phone, email } = communication;
+const phoneRaw = phoneToRaw(phone);
 </script>
 
 <style scoped>

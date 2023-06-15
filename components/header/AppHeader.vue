@@ -7,7 +7,7 @@
 
 <style scoped>
 header {
-  background: linear-gradient(130deg, var(--bright), var(--secondary));
+  background: linear-gradient(130deg, var(--bright), #fff);
   position: relative;
 }
 </style>

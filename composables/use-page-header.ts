@@ -1,7 +1,9 @@
-const header = ref('');
-const img = ref('');
+const useHeader = () => useState(() => '');
+const useImg = () => useState(() => '');
 
 export default function usePageHeader() {
+  const header = useHeader();
+  const img = useImg();
   return {
     header, img,
     setHeader(text: string, imgSrc: string) {

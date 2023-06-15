@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { Location } from '../../types';
+import { Navigation } from '../../types';
 defineProps<{
-  locations: Location[];
+  locations: Navigation[];
 }>();
 </script>
 

@@ -7,42 +7,15 @@
       כעת
     </template>
     <div class="opening-time">
-      <p class="opening-day">
-        <strong>יום א'</strong>
-        <span dir="ltr">9:00 - 13:00</span>
-      </p>
-      <p class="opening-day">
-        <strong>יום ב'</strong>
-        <span dir="ltr">
-          <span>9:00 - 13:00</span>
-          <br>
-          <span>16:00 - 18:00</span>
-        </span>
-      </p>
-      <p class="opening-day">
-        <strong>יום ג'</strong>
-        <span dir="ltr">9:00 - 13:00</span>
-      </p>
-      <p class="opening-day">
-        <strong>יום ד'</strong>
-        <span dir="ltr">
-          <span>9:00 - 13:00</span>
-          <br>
-          <span>16:00 - 18:00</span>
-        </span>
-      </p>
-      <p class="opening-day">
-        <strong>יום ה'</strong>
-        <span dir="ltr">9:00 - 13:00</span>
-      </p>
-      <p class="opening-day">
-        <strong>יום ו'</strong>
-        <span dir="ltr">המועצה סגורה</span>
-      </p>
-      <p class="opening-day">
-        <strong>יום שבת</strong>
-        <span dir="ltr">המועצה סגורה</span>
-      </p>
+      <div v-for="(day, i) in openingHours" :key="i" class="opening-day">
+        <strong>{{ WEEK_DAY_NAMES[i] }}</strong>
+        <div>
+          <div v-if="day.length" v-for="hours in day" dir="ltr">
+            {{ hours.join(' - ') }}
+          </div>
+          <span v-else>המועצה סגורה</span>
+        </div>
+      </div>
     </div>
     <template #footer>
       <!-- <img src="/images/outside.jpeg" class="post" alt="בניין המועצה הדתית"> -->
@@ -51,7 +24,11 @@
 </template>
 
 <script setup lang="ts">
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+import { WEEK_DAY_NAMES } from '../../assets/constants';
+
 const isOpen = useIsOpen();
+const { openingHours } = inject(siteConfigInjectionKey)!;
 </script>
 
 <style scoped>
@@ -66,7 +43,8 @@ const isOpen = useIsOpen();
   align-items: center;
   font-size: 1.7rem;
   padding: 0.6rem;
-  border-radius: 5px;  
+  border-radius: 5px;
+  margin: 20px 0;
 }
 .opening-day:hover {background-color: var(--highlight);}
 </style>

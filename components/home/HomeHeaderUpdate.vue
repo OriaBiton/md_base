@@ -1,7 +1,7 @@
 <template>
   <div class="blog-slider__item">
     <div class="blog-slider__img">
-      <img :src="update.img" :alt="update.title">
+      <img :src="update.img.src" :alt="update.title">
     </div>
     <div class="blog-slider__content">
       <div>
@@ -9,8 +9,8 @@
         <div class="blog-slider__title">{{ update.title }}</div>
       </div>
       <div class="blog-slider__text" v-html="update.content" />
-      <nuxt-link :to="update.link" class="blog-slider__button">
-        {{ update.linkText }}
+      <nuxt-link v-if="update.link" :to="update.link.href" class="blog-slider__button">
+        {{ update.link.text }}
       </nuxt-link>
     </div>
   </div>
@@ -33,6 +33,9 @@ defineProps<{
   display: flex;
   align-items: center;
 }
+.blog-slider__text {
+  font-size: 16px !important;
+}
 .swiper-slide-active .blog-slider__content > * {
   opacity: 1;
   transform: none;
@@ -51,7 +54,7 @@ defineProps<{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: v-bind('update.img.position || "top"');
   display: block;
   opacity: 0;
   border-radius: 20px;

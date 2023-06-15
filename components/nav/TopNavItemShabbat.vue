@@ -10,11 +10,5 @@
 </template>
 
 <script setup lang="ts">
-const { hadlaka, havdala, parasha } = await useHebcal();
-const shabbatTooltip = ref(`
-  <strong>כניסת שבת: </strong>${hadlaka}
-  <br>
-  <strong>יציאת שבת: </strong>${havdala}
-  <br> (בת ים)
-`);
+const { hadlaka, havdala, parasha } = useHebcal();
 </script>

@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { siteConfigInjectionKey } from '../../assets/injection-keys';
-const { phone, email } = inject(siteConfigInjectionKey)!;
+const { phone, email } = inject(siteConfigInjectionKey)!.communication;
 </script>
 
 <style scoped>

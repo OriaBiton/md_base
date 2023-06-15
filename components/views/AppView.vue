@@ -10,15 +10,11 @@
 
 <script setup lang="ts">
 import { siteConfigInjectionKey } from '../../assets/injection-keys';
- 
-export interface SiteConfig {
-  phone: string;
-  phoneRaw: string;
-  email: string;
-  geoName: number;
-}
+import { SiteConfig } from '../../types';
 
-const props = defineProps<SiteConfig>();
+const props = defineProps<{
+  config: SiteConfig;
+}>();
 
-provide(siteConfigInjectionKey, props);
+provide(siteConfigInjectionKey, props.config);
 </script>

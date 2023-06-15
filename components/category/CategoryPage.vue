@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { MenuLink, DepartmentContact, DepartmentMember, Location, DepartmentWhatsapp } from '../../types';
+import { MenuLink, DepartmentContact, DepartmentMember, Navigation, DepartmentWhatsapp } from '../../types';
 
 defineProps<{
   title: string;
@@ -35,7 +35,7 @@ defineProps<{
   whatsapp?: DepartmentWhatsapp;
   contact?: DepartmentContact;
   team?: DepartmentMember[];
-  locations?: Location[];
+  locations?: Navigation[];
 }>();
 </script>
 

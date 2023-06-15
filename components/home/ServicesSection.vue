@@ -3,21 +3,24 @@
     <HomeHeading>שירותי המועצה</HomeHeading>
     <div class="container">
       <div class="cards">
-        <LinkCard to="blessing" image="/images/gamliel-sqr.jpg" name="דברי ברכה" />
-        <LinkCard to="kosher" image="/images/salmon.jpg" name="כשרות" />
-        <LinkCard to="marriage" image="/images/rings.jpg" name="נישואין" />
-        <LinkCard to="mikve" image="/images/mikve.jpg" name="מקוואות" />
-        <LinkCard to="mourning" image="/images/cemetery-sqr.jpg" name="קבורה ואבלות" />
-        <LinkCard to="eruvin" image="/images/eruv-sqr.jpg" name="עירוב שבת" />
-        <LinkCard to="synagogues" image="/images/synagogue-sqr.jpg" name="בתי כנסת" />
-        <LinkCard to="ethiopian" image="/images/eth-pray-sqr.jpg" name="לקהילה האתיופית" />
-        <LinkCard to="jobs" image="/images/auction-sqr.jpg" name="משרות ומכרזים" />
+        <LinkCard
+          v-for="service in services"
+          :key="service.name"
+          :to="service.url"
+          :image="service.img"
+          :name="service.name"
+        />
       </div>
     </div>
     <Icon name="fa6-solid:star-of-david" class="star big" />
     <Icon name="fa6-solid:star-of-david" class="star small" />
   </section>
 </template>
+
+<script setup lang="ts">
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+const { services } = inject(siteConfigInjectionKey)!.home;
+</script>
 
 <style scoped>
 section {

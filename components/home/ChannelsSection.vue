@@ -2,6 +2,9 @@
   <section id="communicate">
     <HomeHeading>ערוצי תקשורת</HomeHeading>
     <div class="container">
+      <div v-if="sideComponent">
+        <component :is="sideComponent" />
+      </div>
       <ul class="channels">
         <li class="phone">
           <a :href="`tel:${phone}`" target="_blank" rel="noopener noreferrer">
@@ -21,6 +24,24 @@
             <Icon name="fluent:person-feedback-24-filled" />
           </nuxt-link>
         </li>
+        <li v-if="facebook" class="facebook">
+          <nuxt-link :to="facebook" target="_blank" rel="noopener noreferrer">
+            <span>פייסבוק</span>
+            <Icon name="fa-facebook" />
+          </nuxt-link>
+        </li>
+        <li v-if="youtube" class="youtube">
+          <nuxt-link :to="youtube" target="_blank" rel="noopener noreferrer">
+            <span>יוטיוב</span>
+            <Icon name="fa-youtube" />
+          </nuxt-link>
+        </li>
+        <li v-if="whatsapp" class="whatsapp">
+          <nuxt-link :to="whatsapp" target="_blank" rel="noopener noreferrer">
+            <span>ווצאפ</span>
+            <Icon name="fa-whatsapp" />
+          </nuxt-link>
+        </li>
       </ul>
     </div>
   </section>
@@ -28,7 +49,9 @@
 
 <script setup lang="ts">
 import { siteConfigInjectionKey } from '../../assets/injection-keys';
-const { phone, email } = inject(siteConfigInjectionKey)!.communication;
+const { communication, home } = inject(siteConfigInjectionKey)!;
+const { phone, email, whatsapp, youtube, facebook } = communication;
+const sideComponent = home.channelsSideComponent;
 </script>
 
 <style scoped>
@@ -41,6 +64,10 @@ section {
 .channels {
   display:flex;
   justify-content: space-evenly;
+}
+ul {
+  flex-wrap: wrap;
+  width: 100%;
 }
 li {
   margin: 4rem 5rem;
@@ -114,6 +141,9 @@ li:hover span {color: var(--brightest);}
 .feedback:hover a{background: #dd4b39;}
 .feedback:hover a:before{background: #b33a2b;}
 .feedback:hover a:after{background: #e66a5a;}
+.youtube:hover a{background: #dd4b39;}
+.youtube:hover a:before{background: #b33a2b;}
+.youtube:hover a:after{background: #e66a5a;}
 .phone:hover a{background: #cf39dd;}
 .phone:hover a::before{background: #b32bac;}
 .phone:hover a::after{background: #cf5ae6;}

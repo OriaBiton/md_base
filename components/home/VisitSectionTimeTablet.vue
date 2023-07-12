@@ -18,7 +18,12 @@
       </div>
     </div>
     <template #footer>
-      <!-- <img src="/images/outside.jpeg" class="post" alt="בניין המועצה הדתית"> -->
+      <img
+        v-if="home.tabletImage"
+        :src="home.tabletImage.src"
+        :alt="home.tabletImage.alt"
+        class="post"
+      >
     </template>
   </VisitSectionTablet>
 </template>
@@ -28,7 +33,7 @@ import { siteConfigInjectionKey } from '../../assets/injection-keys';
 import { WEEK_DAY_NAMES } from '../../assets/constants';
 
 const isOpen = useIsOpen();
-const { openingHours } = inject(siteConfigInjectionKey)!;
+const { openingHours, home } = inject(siteConfigInjectionKey)!;
 </script>
 
 <style scoped>

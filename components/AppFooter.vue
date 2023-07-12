@@ -60,12 +60,13 @@
       •
       All rights reserved © {{ new Date().getFullYear() }}
     </p>
+    <AppFooterWave v-if="footer?.waves" />
   </footer>
 </template>
 
 <script setup lang="ts">
 import { siteConfigInjectionKey } from '../assets/injection-keys';
-const { title, communication, municipality } = inject(siteConfigInjectionKey)!;
+const { title, communication, municipality, footer } = inject(siteConfigInjectionKey)!;
 const { phone, email } = communication;
 const phoneRaw = phoneToRaw(phone);
 </script>
@@ -131,6 +132,7 @@ input {
 ::placeholder{
   font-size: 1.4rem;
 }
+
 @media screen and (max-width: 750px) {
   .container{
     padding-top: 7rem;

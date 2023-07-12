@@ -11,15 +11,7 @@
         name="מחלקות המועצה"
         to="/#services"
         class="desktop"
-        :menu="[
-          { name: 'כשרות', to: '/kosher' },
-          { name: 'נישואין', to: '/marriage' },
-          { name: 'מקוואות', to: '/mikve' },
-          { name: 'קבורה ואבלות', to: '/mourning' },
-          { name: 'עירובין', to: '/eruvin' },
-          { name: 'בתי כנסת', to: '/synagogues' },
-          { name: 'העדה האתיופית', to: '/ethiopian' },
-        ]"
+        :menu="departments"
       />
     </ul>
     <TopNavItemChannels class="desktop" />
@@ -27,6 +19,13 @@
 </template>
 
 <script setup lang="ts">
+import { siteConfigInjectionKey } from '../../assets/injection-keys';
+
+const {
+  departments,
+  fontSize = 15
+} = inject(siteConfigInjectionKey)!.nav.topNav;
+
 defineProps<{
   wide: boolean;
 }>();
@@ -46,7 +45,7 @@ defineEmits(['burgerClick']);
 .flex.wide {
   width: 85%;
 }
-ul{
+ul {
   display: flex;
   align-items: center;
   height: 5rem;
@@ -55,13 +54,14 @@ ul{
   line-height: unset;
   gap: 3vw;
 }
-li{
+li {
+  --font-size: v-bind('`${fontSize}px`');
+  font-size: var(--font-size);
   list-style: none;
-  font-size: 17px;
   position: relative;
   transition: .5s;
 }
-li.link{
+li.link {
   transition: .7s .7s;  
 }
 .wide li.link{

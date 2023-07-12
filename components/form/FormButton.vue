@@ -17,8 +17,8 @@
 
 <script setup lang="ts">
 defineProps<{
-  loading: boolean;
-  sent: boolean;
+  loading?: boolean;
+  sent?: boolean;
 }>();
 
 defineEmits(['click']);

@@ -1,11 +1,30 @@
 export interface SiteConfig {
   title: string;
+  nav: Nav;
   location: Location;
   openingHours: WeeklyHours;
   communication: Communication;
   home: HomeConfig;
   municipality: Municipality;
   footer?: FooterOptions;
+}
+
+interface Nav {
+  topNav: {
+    fontSize?: number;
+    departments: Link[];
+    hasMunicipality?: boolean;
+  }
+  sideNav: {
+    items: SideNavItem[];
+  }
+}
+
+interface SideNavItem {
+  icon: string;
+  name: string;
+  to?: string;
+  menu?: Link[];
 }
 
 interface FooterOptions {
@@ -34,10 +53,12 @@ interface Communication {
 interface HomeConfig {
   updates: Update[];
   services: ServiceCard[];
+  tabletImage?: Image;
+  channelsSideComponent?: Component;
 }
 
 export interface ServiceCard {
-  name: 'דברי ברכה' | 'לשכת הרב' | 'כשרות' | 'נישואין' | 'קבורה ואבלות' | 'מקוואות' | 'עירוב שבת' | 'בתי כנסת' | 'זהות יהודית' | 'סת"ם' | 'מדיה' | 'מידע שימושי' | 'משרות ומכרזים' | 'לקהילה האתיופית';
+  name: 'דברי ברכה' | 'לשכת הרב' | 'כשרות' | 'נישואין' | 'קבורה ואבלות' | 'מקוואות' | 'עירוב שבת' | 'בתי כנסת' | 'זהות יהודית' | 'סת"ם' | 'מדיה' | 'מידע שימושי' | 'משרות ומכרזים' | 'לקהילה האתיופית' | 'אגרות ותעריפים';
   img: string;
   url: string;
 }
@@ -45,13 +66,7 @@ export interface ServiceCard {
 type HourRange = [string, string] | [];
 export type WeeklyHours = [HourRange[], HourRange[], HourRange[], HourRange[], HourRange[], HourRange[], HourRange[]];
 
-export interface DepartmentContact {
-  name: string;
-  email: string;
-  phone: string;
-}
-
-export interface MenuLink {
+export interface Link {
   name: string;
   to: string;
   external?: boolean;
@@ -61,7 +76,7 @@ export interface MenuLink {
 export interface DepartmentMember {
   name: string;
   position: string;
-  phone: string;
+  phone?: string;
 }
 
 export interface Navigation {
@@ -77,8 +92,9 @@ export interface Update {
   link?: { href: string; text: string; }
 }
 
-interface Image {
+export interface Image {
   src: string;
+  alt?: string;
   position?: string;
 }
 

@@ -15,13 +15,13 @@
 </template>
 
 <script setup lang="ts">
-import { MenuLink } from '../../types';
+import { Link } from '../../types';
 
 defineProps<{
   icon: string;
   name: string;
   to?: string;
-  dropdown?: MenuLink[];
+  dropdown?: Link[];
   active: boolean;
 }>();
 

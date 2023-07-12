@@ -1,23 +1,22 @@
 <template>
   <AppCard :header="header">
-    <nuxt-link
+    <MenuLink
       v-for="(link, i) in menu"
       :to="link.to"
       :target="link.external || link.download ? '_blank' : '_self'"
       :download="link.download"
       :key="i"
-      class="item"
     >
       {{ link.name }}
-    </nuxt-link>
+    </MenuLink>
   </AppCard>
 </template>
 
 <script setup lang="ts">
-import { MenuLink } from '../../types';
+import { Link } from '../../types';
 
 withDefaults(defineProps<{
-  menu: MenuLink[];
+  menu: Link[];
   header?: string;
 }>(), {
   header: 'תפריט'
@@ -26,19 +25,6 @@ withDefaults(defineProps<{
 
 <style scoped>
 .card {
-  text-align: center;
-}
-.item {
-  font-size: 26px;
-  background-color: var(--secondary);
-  padding: 10px 0;
-  color: var(--brightest);
-  border-radius: 3px;
-  display: inline-block;
-  transition: background-color 0.2s;
-  width: 80%;
-  box-sizing: border-box;
-  margin: 2.5rem auto;
   text-align: center;
 }
 </style>

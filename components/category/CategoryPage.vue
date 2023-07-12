@@ -5,9 +5,11 @@
     </div>
     <AppSplit class="menu-section">
       <CategoryMenu
-        :menu="menu.concat(...(locations ? [{ name: 'ניווט', to: '#locations' }] : []))"
+        :menu="menu
+          .concat(locations ? [{ name: 'ניווט', to: '#locations' }] : [])
+          .concat(team ? [{ name: 'צוות המחלקה', to: '#team' }] : [])"
       />
-      <img :src="img" :alt="title" class="post">
+      <img :src="img.src" :alt="title" class="post">
     </AppSplit>
     <AppSplit v-if="locations" id="locations">
       <CategoryLocations :locations="locations" />
@@ -16,24 +18,24 @@
       <slot />
     </div>
     <AppSplit>
-      <CategoryTeam v-if="team" :team="team" />
-      <AppCard id="contact" header="יצירת קשר">
+      <CategoryTeam v-if="team" id="team" :team="team" />
+      <AppCard v-if="contact || whatsapp" id="contact" header="יצירת קשר">
         <CategoryWhatsapp v-if="whatsapp" :whatsapp="whatsapp" />
-        <ContactForm />
+        <ContactForm v-if="contact" />
       </AppCard>
     </AppSplit>
   </AppPage>
 </template>
 
 <script setup lang="ts">
-import { MenuLink, DepartmentContact, DepartmentMember, Navigation, DepartmentWhatsapp } from '../../types';
+import { Link, DepartmentMember, Navigation, DepartmentWhatsapp, Image } from '../../types';
 
 defineProps<{
   title: string;
-  img: string;
-  menu: MenuLink[];
+  img: Image;
+  menu: Link[];
   whatsapp?: DepartmentWhatsapp;
-  contact?: DepartmentContact;
+  contact?: boolean;
   team?: DepartmentMember[];
   locations?: Navigation[];
 }>();

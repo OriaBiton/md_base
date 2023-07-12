@@ -10,12 +10,12 @@
 </template>
 
 <script setup lang="ts">
-import { MenuLink } from '../../types';
+import { Link } from '../../types';
 
 defineProps<{
   name: string;
   to: string;
-  menu: MenuLink[];
+  menu: Link[];
 }>();
 </script>
 
@@ -25,7 +25,7 @@ defineProps<{
   padding-bottom: 15px;
 }
 .dropdown > a {
-  font-size: 18px;
+  font-size: calc(var(--font-size) + 2px);
 }
 .dropdown::after{
   content: '⯇';

@@ -1,11 +1,7 @@
 <template>
-  <nuxt-loading-indicator />
-  <AppNav />
-  <AppHeader />
-  <main>
+  <nuxt-layout>
     <nuxt-page />
-  </main>
-  <AppFooter />
+  </nuxt-layout>
 </template>
 
 <script setup lang="ts">

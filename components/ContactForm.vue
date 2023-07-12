@@ -4,12 +4,12 @@
       <input v-model="form.name" type="text" required>
     </FormField>
     <FormField label='דוא"ל'>
-      <input v-model="form.email" type="email">
+      <input v-model="form.fromEmail" type="email">
     </FormField>
-    <FormField label='טלפון'>
+    <FormField v-if="!isRabbiQuestion" label='טלפון'>
       <input v-model="form.phone" type="tel" required>
     </FormField>
-    <FormField label='הודעה'>
+    <FormField :label="isRabbiQuestion ? 'שאלה' : 'הודעה'">
       <textarea v-model="form.msg" rows="4" />
     </FormField>
 
@@ -18,12 +18,21 @@
 </template>
 
 <script setup lang="ts">
-const form = reactive({
+import { siteConfigInjectionKey } from '../assets/injection-keys';
+
+defineProps<{
+  isRabbiQuestion?: boolean;
+}>();
+
+const { email } = inject(siteConfigInjectionKey)?.communication!;
+
+const form = {
   name: '',
-  email: '',
+  fromEmail: '',
   phone: '',
-  msg: ''
-});
+  msg: '',
+  mdEmail: email,
+};
 
 const loading = ref(false);
 const sent = ref(false);
@@ -31,7 +40,7 @@ const sent = ref(false);
 async function send(e: Event) {
   e.preventDefault();
   loading.value = true;
-  await useFetch('/api/send-contact-message', { method: 'POST', body: form });  
+  await useFetch('/api/send-contact-message', { method: 'POST', body: form });
   loading.value = false;
   sent.value = true;  
 }

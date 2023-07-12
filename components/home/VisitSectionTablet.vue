@@ -8,7 +8,9 @@
       <h4>{{ bodyHeader }}</h4>
       <slot />
     </div>
-    <slot name="footer" />
+    <div class="footer">
+      <slot name="footer" />
+    </div>
   </div>
 </template>
 
@@ -36,7 +38,7 @@ defineProps<{
   transition: 2s;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
   overflow: hidden;
   text-align: center;
 }
@@ -67,11 +69,12 @@ defineProps<{
 .tablet.reveal > * {
   opacity: 0;
 }
-.gmap_canvas{width: 100%; height: 100%;}
+.footer {
+  flex-grow: 1;
+}
 h3{
   font-size: 3.5rem;
-  margin-bottom: 4rem;
-  margin-top: 0;
+  margin: 0 0 2rem 0;
 }
 p{
   margin-bottom: 0;

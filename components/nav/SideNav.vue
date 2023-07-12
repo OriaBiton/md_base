@@ -4,9 +4,9 @@
       <nuxt-link to="/">
         <img src="/images/logo.png" alt="לוגו המועצה הדתית" class="whiten">
       </nuxt-link>
-      <div class="close" @click="$emit('update:modelValue', false)">✕</div>
+      <div class="close" @click="close">✕</div>
     </div>
-    <SideNavItems @navigation="$emit('update:modelValue', false)" />
+    <SideNavItems @navigation="close" />
   </div>
 </template>
 
@@ -15,9 +15,13 @@ defineProps<{
   modelValue: boolean;
 }>();
 
-defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
+const emit = defineEmits<{
+  'update:modelValue': [boolean];
 }>();
+
+function close() {
+  emit('update:modelValue', false);
+}
 </script>
 
 <style scoped>

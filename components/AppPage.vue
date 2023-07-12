@@ -7,14 +7,17 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  title: string;
-  img?: string;
-}>(), {
-  img: '/images/hero.jpeg'
-});
+import { Image } from '../types';
 
-usePageHeader().setHeader(props.title, props.img);
+const {
+  title,
+  img = { src: '/images/hero.jpeg' }
+} = defineProps<{
+  title: string;
+  img?: Image;
+}>();
+
+onMounted(() => usePageHeader().setHeader(title, img));
 </script>
 
 <style scoped>

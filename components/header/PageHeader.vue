@@ -1,5 +1,6 @@
 <template>
-  <div class="wrapper" :style="{ '--img': `url(${img})` }">
+  <div class="wrapper">
+    <img :src="img.src" :alt="img.alt" class="bg">
     <div class="logo">
       <img src="/images/logo.png" alt="לוגו המועצה" class="whiten">
     </div>
@@ -13,12 +14,17 @@ const { header, img } = usePageHeader();
 
 <style scoped>
 .wrapper {
-  background-image: var(--img);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 400px;
   position: relative;
+  overflow: hidden;
+}
+.bg {
+  position: absolute;
+  object-position: center;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  filter: blur(15px);
 }
 .logo, h1 {
   position: absolute;

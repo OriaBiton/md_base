@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-const formRef = ref<InstanceType<typeof HTMLFormElement> | null>(null);
+const formRef = ref<InstanceType<typeof HTMLFormElement>>();
 
 defineEmits<{
-  (e: 'submit', event: Event): void;
+  (e: 'submit', event: SubmitEvent): void;
 }>();
 
 defineExpose({ reset });

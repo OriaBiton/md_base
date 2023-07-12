@@ -1,13 +1,20 @@
 <template>
   <label>
-    {{ label }}
-    <slot />
+    <template v-if="labelAfter">
+      <slot />
+      {{ label }}
+    </template>
+    <template v-else>
+      {{ label }}
+      <slot />
+    </template>
   </label>
 </template>
 
 <script setup lang="ts">
 defineProps<{
   label: string;
+  labelAfter?: boolean;
 }>();
 </script>
 

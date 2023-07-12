@@ -11,15 +11,6 @@ const expanded = ref(false);
 </script>
 
 <style scoped>
-:deep(.divider::before){
-  content: '';
-  width: 3px;
-  height: 3rem;
-  background-color: var(--secondary);
-  display: block;
-  border-radius: 2rem;
-  opacity: .2;
-}
 @media (max-width: 600px) {
   .top-nav{background-color: var(--brightest);}
   .top-nav ul{

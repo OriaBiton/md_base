@@ -1,21 +1,33 @@
 import { siteConfigInjectionKey } from "../assets/injection-keys";
 import { WeeklyHours } from "../types";
 
+const RESET_INTERVAL_MS = 60000;
+
 const useIsOpenState = () => useState(() => false);
+
+var resetInterval: NodeJS.Timer;
 
 export default function useIsOpen() {
   const { openingHours } = inject(siteConfigInjectionKey)!;
+  const { isHoliday } = useHebcal();
   const isOpen = useIsOpenState();
 
   onMounted(() => {
-    const { isHoliday } = useHebcal();
-    isOpen.value = !isHoliday.value || checkIsOpen(openingHours);
+    if (resetInterval) {
+      setIsOpen();
+    } else {
+      resetInterval = setInterval(setIsOpen, RESET_INTERVAL_MS);
+    }
   });
 
   return isOpen;
+
+  function setIsOpen() {
+    isOpen.value = !isHoliday.value || checkIsOpen(openingHours);
+  }
 }
 
-function checkIsOpen(hours: WeeklyHours): boolean {
+function checkIsOpen(hours: WeeklyHours) {
   const now = new Date();
   const currentDay = now.getDay();
   const currentTime = now.getHours() * 60 + now.getMinutes();

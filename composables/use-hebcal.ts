@@ -26,7 +26,12 @@ export default function useHebcal() {
   const isHoliday = useIsHoliday();
   const { geoName } = inject(siteConfigInjectionKey)!.location;
   init(geoName);
-  return { parasha, hadlaka, havdala, sunset, dayOfWeek, hebDate, isHoliday };
+  return {
+    parasha, hadlaka, havdala, sunset, dayOfWeek, hebDate, isHoliday,
+    reset() {
+      init(geoName);
+    }
+  };
 
   function init(geoName: number) {
     initHebDate();

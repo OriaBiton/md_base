@@ -38,4 +38,8 @@ export default defineNuxtConfig({
   ],
 
   modules: ['nuxt-icon', 'nuxt-swiper'],
+
+  runtimeConfig: {
+    sendgridKey: process.env.SENDGRID_KEY
+  }
 });

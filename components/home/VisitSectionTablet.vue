@@ -1,5 +1,11 @@
 <template>
-  <div :class="`tablet reveal ${type}`">
+  <AppReveal
+    bottom
+    :left="type == 'place'"
+    :right="type == 'time'"
+    :duration="2000"
+    :class="`tablet ${type}`"
+  >
     <h3>
       <slot name="header">{{ header }}</slot>
     </h3>
@@ -11,7 +17,7 @@
     <div class="footer">
       <slot name="footer" />
     </div>
-  </div>
+  </AppReveal>
 </template>
 
 <script setup lang="ts">
@@ -35,15 +41,11 @@ defineProps<{
   left: 0;
   top: 0;
   box-shadow: 0px 14px 80px rgba(125, 125, 125, 0.2);
-  transition: 2s;
   display: flex;
   flex-direction: column;
   gap: 20px;
   overflow: hidden;
   text-align: center;
-}
-.tablet.reveal{
-  top: 30vh;
 }
 .tablet::before{
   font-size: 15rem;
@@ -57,17 +59,8 @@ defineProps<{
 }
 .tablet.time{margin-right: 1rem;}
 .tablet.place{margin-left: 1rem;}
-.tablet.place.reveal{
-  left: 30vw;
-}
-.tablet.time.reveal{
-  left: -30vw;
-}
 .tablet > *{
   transition: opacity .5s 1s;
-}
-.tablet.reveal > * {
-  opacity: 0;
 }
 .footer {
   flex-grow: 1;

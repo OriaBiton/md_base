@@ -1,7 +1,9 @@
 <template>
-  <h2 class="reveal">
-    <slot />
-  </h2>
+  <AppReveal side>
+    <h2>
+      <slot />
+    </h2>
+  </AppReveal>
 </template>
 
 <style scoped>
@@ -27,10 +29,5 @@ h2::after {
   right: 0;
   bottom: 10px;
   border-radius: 0 0 0 1rem;
-}
-h2.reveal {
-  transform: translateX(min(100rem, 80vw));
-  width: 100%;
-  opacity: 0;
 }
 </style>

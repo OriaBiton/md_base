@@ -43,11 +43,21 @@ const { header, img } = usePageHeader();
 h1 {
   bottom: 20px;
   right: 0;
-  padding: 0 50px 0 20px;
+  padding: 0 50px 10px 20px;
   display: inline-block;
   font-size: 66px;
   margin: 0;
   color: var(--brightest);
+}
+h1::after {
+  content: '';
+  width: calc(100% - 20px);
+  height: 9px;
+  background-color: var(--highlight);
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  border-radius: 0 0 0 1rem;
 }
 
 @media (max-width: 600px) {

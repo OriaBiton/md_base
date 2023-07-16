@@ -93,7 +93,7 @@ defineProps<{
 }
 .blog-slider__button {
   display: inline-flex;
-  background: var(--highlight);
+  background: var(--secondary);
   color: var(--brightest);
   padding: 10px 25px;
   border-radius: 50px;

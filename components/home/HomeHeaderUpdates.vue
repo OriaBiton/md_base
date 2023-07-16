@@ -63,7 +63,7 @@ h3 {
   position: absolute;
   top: 2rem;
   right: 35px;
-  color: var(--highlight);
+  color: var(--primary);
 }
 h3 .icon {
   margin-right: 10px;

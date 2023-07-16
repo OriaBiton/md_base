@@ -61,8 +61,13 @@ h1::after {
 }
 
 @media (max-width: 600px) {
+  .wrapper {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+  }
   h1 {
-    font-size: 33px;
+    font-size: 42px;
     padding-right: 15px;
   }
   .logo {

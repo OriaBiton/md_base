@@ -41,7 +41,7 @@ defineProps<{
   transform: none;
 }
 .blog-slider__img {
-  width: 55%;
+  width: 50%;
   flex-shrink: 0;
   height: 43rem;
   background: var(--highlight);

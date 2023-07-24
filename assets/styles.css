@@ -71,6 +71,10 @@ button {
   font-family: "Noto Sans Hebrew", "Calibri", "Arial", sans-serif;
 }
 
+h2 {
+  font-size: 22px;
+}
+
 img,
 iframe {
   max-width: 100%;

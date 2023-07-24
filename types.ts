@@ -35,6 +35,7 @@ interface Location {
   address: string;
   geoName: number;
   navigationUrl: string;
+  accessibilityStatement: string;
 }
 
 interface Municipality {

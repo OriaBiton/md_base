@@ -17,6 +17,11 @@
 import { siteConfigInjectionKey } from '../../assets/injection-keys';
 
 const { items } = inject(siteConfigInjectionKey)!.nav.sideNav;
+items.push({
+  name: 'הצהרת נגישות',
+  to: '/accessibility-statement',
+  icon: 'fa-solid:wheelchair'
+});
 
 const activeItem = ref();
 

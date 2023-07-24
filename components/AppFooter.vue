@@ -40,6 +40,12 @@
               {{ email }}
             </a>
           </li>
+          <li>
+            <nuxt-link to="/accessibility-statement">
+              <Icon name="fa-solid:wheelchair" size="20" class="ml-1" />
+              הצהרת נגישות
+            </nuxt-link>
+          </li>
         </ul>
       </div>
       <div>

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <template v-if="nav.topNav.hasMunicipality">
       <TopNavItemMunicipality />
-      <div class="divider" />
+      <TopNavDivider />
     </template>
     <div class="icons">
       <nuxt-link :to="`tel:${phoneRaw}`" target="_blank" rel="noopener">
@@ -23,6 +23,10 @@
       <nuxt-link to="/contact">
         <img src="/images/mail.png" title="יצירת קשר" alt="אייקון יצירת קשר">
       </nuxt-link>
+      <TopNavDivider />
+      <nuxt-link to="/accessibility-statement" title="הצהרת נגישות">
+        <Icon name="fa-solid:wheelchair" size="26" />
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -40,13 +44,6 @@ const phoneRaw = phoneToRaw(phone);
   display: flex;
   align-items: center;
   gap: 20px;
-}
-.divider {
-  width: 3px;
-  height: 3rem;
-  background-color: var(--secondary);
-  border-radius: 2rem;
-  opacity: .2;
 }
 .icons{
   display: flex;

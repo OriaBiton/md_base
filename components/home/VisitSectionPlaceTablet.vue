@@ -5,9 +5,10 @@
     body-icon="fa-solid:wheelchair"
     body-header="מידע בנושא נגישות"
   >
-    <p>
-      המקום מונגש לבעלי מוגבלויות. במידה ויש צורך בשירות פרונטלי ניתן ליצור קשר בשעות הפעילות ונציג המועצה יגיע לסייע.
-    </p>
+    <p v-html="location.accessibilityStatement" />
+    <nuxt-link to="/accessibility-statement">
+      הצהרת הנגישות של האתר
+    </nuxt-link>
     <template #footer>
       <iframe
         :src="`https://www.google.com/maps/embed/v1/place?q=${title}&key=AIzaSyB6C1Ls4JUdQjQPURs3dDmPJ6yauukTDzM&region=IL&language=iw`"
@@ -26,7 +27,13 @@ const { address } = location;
 </script>
 
 <style scoped>
-p {font-size: 1.4rem;}
+p {
+  margin-bottom: 3px;
+}
+p, a {font-size: 1.4rem;}
+a {
+  display: block;
+}
 iframe {
   flex-grow: 1;
   width: 100%; height: 100%;

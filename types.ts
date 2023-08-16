@@ -90,7 +90,7 @@ export interface Update {
   content: string;
   date: string;
   img: Image;
-  link?: { href: string; text: string; }
+  link?: { href: string; text: string; isFile: boolean; }
 }
 
 export interface Image {

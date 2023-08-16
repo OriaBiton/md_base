@@ -9,7 +9,12 @@
         <div class="blog-slider__title">{{ update.title }}</div>
       </div>
       <div class="blog-slider__text" v-html="update.content" />
-      <nuxt-link v-if="update.link" :to="update.link.href" class="blog-slider__button">
+      <nuxt-link
+        v-if="update.link"
+        :to="update.link.href"
+        :target="update.link.isFile ? '_blank' : '_self'"
+        class="blog-slider__button"
+      >
         {{ update.link.text }}
       </nuxt-link>
     </div>

@@ -2,7 +2,7 @@
   <div class="updates">
     <div class="blog-slider">  
       <h3>
-        עדכונים <Icon name="fa6-solid:bullhorn" size="44" />
+        <Icon name="fa6-solid:bullhorn" size="50" />
       </h3>
         <Swiper
           :loop="true"
@@ -61,9 +61,9 @@ h3 {
   direction: rtl;
   font-size: 52px;
   position: absolute;
-  top: 2rem;
-  right: 35px;
-  color: var(--primary);
+  top: 0;
+  right: 20px;
+  color: var(--highlight);
 }
 h3 .icon {
   margin-right: 10px;

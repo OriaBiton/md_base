@@ -1,12 +1,12 @@
 <template>
   <div class="blog-slider__item">
     <div class="blog-slider__img">
-      <img :src="update.img.src" :alt="update.title">
+      <ExpandableImage :src="update.img.src" :alt="update.title" class="expandable" />
     </div>
     <div class="blog-slider__content">
       <div>
-        <span class="blog-slider__code">{{ update.date }}</span>
         <div class="blog-slider__title">{{ update.title }}</div>
+        <span class="blog-slider__code">{{ update.date }}</span>
       </div>
       <div class="blog-slider__text" v-html="update.content" />
       <nuxt-link
@@ -30,16 +30,13 @@ defineProps<{
 </script>
 
 <style scoped>
-.swiper-slide-active .blog-slider__img img {
-  opacity: 1;
-  transition-delay: 0.3s;
-}
 .blog-slider__item {
   display: flex;
   align-items: center;
 }
 .blog-slider__text {
-  font-size: 16px !important;
+  font-size: 18px !important;
+  flex-grow: 1;
 }
 .swiper-slide-active .blog-slider__content > * {
   opacity: 1;
@@ -55,7 +52,8 @@ defineProps<{
   transform: translateX(-80px);
   overflow: hidden;
 }
-.blog-slider__img img {
+.blog-slider__img .expandable,
+.blog-slider__img :deep(img) {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -65,14 +63,19 @@ defineProps<{
   border-radius: 20px;
   transition: all 0.3s;
 }
+.swiper-slide-active .blog-slider__img .expandable,
+.swiper-slide-active .blog-slider__img :deep(img) {
+  opacity: 1;
+  transition-delay: 0.3s;
+}
 .blog-slider__content {
-  padding-right: 15px;
+  padding-right: 25px;
   padding-top: 30px;
   direction: rtl;
-  height: 100%;
+  height: 350px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
 }
 .blog-slider__content > * {
   opacity: 0;
@@ -88,13 +91,12 @@ defineProps<{
   font-size: 30px;
   font-weight: 700;
   color: var(--dark);
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 .blog-slider__text {
   color: var(--dark);
   margin-bottom: 30px;
   line-height: 1.5em;
-  font-size: 20px;
 }
 .blog-slider__button {
   display: inline-flex;
@@ -113,17 +115,17 @@ defineProps<{
 
 @media (max-width: 600px) {
   .blog-slider__item {
-      flex-direction: column;
+    flex-direction: column;
   }
   .blog-slider__img {
-      transform: translateY(-50%);
-      width: 95%;    
-      height: 270px;
+    transform: translateY(-50%);
+    width: 95%;    
+    height: 270px;
   }
   .blog-slider__content {
-      margin-top: -80px;
-      text-align: center;
-      padding: 0;
-   }
+    margin-top: -80px;
+    text-align: center;
+    padding: 0;
+  }
 }
 </style>

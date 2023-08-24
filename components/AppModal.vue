@@ -49,4 +49,10 @@ defineEmits<{
 .v-leave-to {
   opacity: 0;
 }
+
+@media (max-width: 600px) {
+  .content {
+    height:  unset;
+  }
+}
 </style>

@@ -123,7 +123,7 @@ defineProps<{
     height: 270px;
   }
   .blog-slider__content {
-    margin-top: -80px;
+    margin-top: -97px;
     text-align: center;
     padding: 0;
   }

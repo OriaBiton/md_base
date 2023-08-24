@@ -121,7 +121,7 @@ h3 .icon {
   .blog-slider__pagination {
     transform: translateX(-50%);
     left: 50% !important;
-    top: 205px;
+    top: 158px;
     width: 100% !important;
     display: flex;
     justify-content: center;

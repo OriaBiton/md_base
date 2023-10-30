@@ -7,11 +7,22 @@
       </a>
       <br>
       <a :href="`tel:${phoneToRaw(mikve.phone)}`">
-        <Icon name="fa-solid:phone-alt" size="20" class="ml-1" /> {{ mikve.phone }}
+        <Icon name="fa-solid:phone-alt" size="20" class="ml-1" />
+        {{ mikve.phone }}
+        |
       </a>
+      <small>
+        זמין בשעות הפתיחה.
+        לברורים בשעות אחרות ניתן לפנות טלפונית למשרדי המועצה.
+      </small>
     </p>
+    <hr class="mb-2">
     <p class="mt-0">
-      <template v-if="mikve.hours">
+      <span v-if="mikve.closed" class="danger">
+        <Icon name="mdi-warning-circle" size="20" />
+        המקווה סגור עד להודעה חדשה
+      </span>
+      <template v-else-if="mikve.hours">
         {{ mikve.hours }}
       </template>
       <template v-else>
@@ -19,8 +30,8 @@
             <strong>ימי חול א'-ה'</strong>
             <br>
             מזמן שקיעת החמה עד כארבע שעות לאחר מכן.
+            <br>
           </span>
-          <br>
           <span>
             <strong>ערב שבת /חג:</strong>
             <br>
@@ -34,8 +45,11 @@
           </span>
       </template>
     </p>
-    <p v-if="mikve.notes">
-      <Icon name="material-symbols:info-rounded" size="20" /> {{ mikve.notes }}
+    <p v-if="mikve.notes" class="danger">
+      <Icon name="mdi-info" size="20" class="ml-1" />
+      <strong>
+        {{ mikve.notes }}
+      </strong>
     </p>
   </InfoCard>
 </template>

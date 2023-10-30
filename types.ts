@@ -123,4 +123,5 @@ export interface Mikve {
   men?: boolean;
   closedOnWeekdays?: boolean;
   closedOnShabbatEnd?: boolean;
+  closed?: boolean;
 }

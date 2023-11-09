@@ -124,4 +124,5 @@ export interface Mikve {
   closedOnWeekdays?: boolean;
   closedOnShabbatEnd?: boolean;
   closed?: boolean;
+  video?: string;
 }

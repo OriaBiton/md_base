@@ -1,5 +1,5 @@
 <template>
-  <InfoCard :name="mikve.name" :img="mikve.img">
+  <InfoCard :name="mikve.name" :img="mikve.img" :width="400">
     <p class="mt-0">
       <a :href="mikve.navigation" target="_blank">
         <Icon name="simple-icons:waze" size="22" class="ml-1" />
@@ -12,7 +12,7 @@
         |
       </a>
       <small>
-        זמין בשעות הפתיחה.
+        זמין בשעות פתיחת המקווה.
         לברורים בשעות אחרות ניתן לפנות טלפונית למשרדי המועצה.
       </small>
     </p>
@@ -29,7 +29,7 @@
           <span v-if="!mikve.closedOnWeekdays">
             <strong>ימי חול א'-ה'</strong>
             <br>
-            מזמן שקיעת החמה עד כארבע שעות לאחר מכן.
+            מזמן שקיעת החמה עד ארבע שעות לאחר מכן.
             <br>
           </span>
           <span>
@@ -41,7 +41,7 @@
           <span v-if="!mikve.closedOnShabbatEnd">
             <strong>מוצאי שבת/חג</strong>
             <br>
-            חצי שעה לאחר צאת השבת/חג עד כשלוש שעות לאחר מכן.
+            חצי שעה לאחר צאת השבת/חג עד שלוש שעות לאחר מכן.
           </span>
       </template>
     </p>
@@ -51,6 +51,7 @@
         {{ mikve.notes }}
       </strong>
     </p>
+    <YouTubeEmbed v-if="mikve.video" :video="mikve.video" class="post" />
   </InfoCard>
 </template>
 

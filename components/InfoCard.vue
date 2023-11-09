@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :style="{ width }">
     <div class="image" :style="{ backgroundImage: `url(${img})` }">
       <div class="links">
         <nuxt-link v-for="(link, i) in links" :to="link.to" :key="i" target="_blank">
@@ -20,11 +20,14 @@ interface Link {
   icon: string;
 }
 
-defineProps<{
+const props = defineProps<{
   name: string;
   img: string;
   links?: Link[];
+  width?: number;
 }>();
+
+const width = computed(() => (props.width || 320) + 'px');
 </script>
 
 <style scoped>
@@ -33,7 +36,6 @@ defineProps<{
   border: 1px solid white;
   background-color: white;
   border-radius: 6px;
-  width: 320px;
 }
 .image {
   background-position: center;

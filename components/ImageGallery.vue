@@ -1,6 +1,6 @@
 <template>
   <silent-box
-    :gallery="new Array(count).fill(0).map((_, i) => ({ src: `${folder}/${i + 1}.${extension || DEFAULT_EXT}` }))"
+    :gallery="new Array(count).fill(0).map((_, i) => ({ src: `${folder}/${count - i}.${extension || DEFAULT_EXT}` }))"
   />
 </template>
 

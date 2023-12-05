@@ -23,42 +23,45 @@
           <a href="https://www.gov.il/he/Departments/the_rabbinical_courts" target="_blank">
             בתי הדין הרבניים
           </a>
-        </li> 
+        </li>
       </div>
-      <div>
-        <h3>משרדי המועצה</h3>
-        <ul>
-          <li>
-            <a :href="`tel:${phoneRaw}`">
-              <Icon name="fa-solid:phone-alt" size="20" class="ml-1" />
-              {{ phone }}
-            </a>
-          </li>
-          <li>
-            <a :href="`mailto:${email}`">
-              <Icon name="fa-envelope" size="20" class="ml-1" />
-              {{ email }}
-            </a>
-          </li>
-          <li>
-            <nuxt-link to="/accessibility-statement">
-              <Icon name="fa-solid:wheelchair" size="20" class="ml-1" />
-              הצהרת נגישות
+      <div class="col">
+        <div>
+          <h3>משרדי המועצה</h3>
+          <ul>
+            <li>
+              <a :href="`tel:${phoneRaw}`">
+                <Icon name="fa-solid:phone-alt" size="20" class="ml-1" />
+                {{ phone }}
+              </a>
+            </li>
+            <li>
+              <a :href="`mailto:${email}`">
+                <Icon name="fa-envelope" size="20" class="ml-1" />
+                {{ email }}
+              </a>
+            </li>
+            <li>
+              <nuxt-link to="/accessibility-statement">
+                <Icon name="fa-solid:wheelchair" size="20" class="ml-1" />
+                הצהרת נגישות
+              </nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>דרכי התקשרות</h3>
+          <div class="socials">
+            <nuxt-link to="/contact">
+              <Icon name="fa-envelope" size="30" />
             </nuxt-link>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h3>דרכי התקשרות</h3>
-        <div class="socials">
-          <nuxt-link to="/contact">
-            <Icon name="fa-envelope" size="30" />
-          </nuxt-link>
-          <a :href="`tel:${phoneRaw}`">
-            <Icon name="fa-solid:phone-alt" size="30" />
-          </a>
+            <a :href="`tel:${phoneRaw}`">
+              <Icon name="fa-solid:phone-alt" size="30" />
+            </a>
+          </div>
         </div>
       </div>
+        <YeshivaTimesFrame />
     </div>
     <p class="copyright">
       {{ title }} -
@@ -72,13 +75,14 @@
 
 <script setup lang="ts">
 import { siteConfigInjectionKey } from '../assets/injection-keys';
+
 const { title, communication, municipality, footer } = inject(siteConfigInjectionKey)!;
 const { phone, email } = communication;
 const phoneRaw = phoneToRaw(phone);
 </script>
 
 <style scoped>
-footer::before{
+footer::before {
   width: 100%;
   background-color: inherit;
   height: 13rem;
@@ -88,64 +92,92 @@ footer::before{
   position: absolute;
   top: -7rem;
 }
+
 footer {
-  position:relative;
-  text-align:center;
+  position: relative;
+  text-align: center;
   background-color: #144775;
   color: var(--brightest);
   font-size: 18px;
 }
+
 .logo {
   height: 200px;
 }
-p{padding-top: 10rem;}
-.container{
+
+p {
+  padding-top: 10rem;
+}
+
+.container {
   display: flex;
   padding-top: 12rem;
   text-align: right;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-h3{
+
+h3 {
   font-size: 20px;
+  margin-top: 0;
   margin-bottom: 2rem;
 }
-li{
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+li {
   list-style: none;
   margin-bottom: 1.2rem;
 }
-a{
+
+a {
   opacity: .8;
 }
-.icon {font-size: 2.2rem;}
-:is(a, button):hover{opacity: 1 !important;}
-.socials{
+
+.icon {
+  font-size: 2.2rem;
+}
+
+:is(a, button):hover {
+  opacity: 1 !important;
+}
+
+.socials {
   display: flex;
   gap: 40px;
 }
+
 .copyright {
   font-size: 1.2rem;
   opacity: .8;
   margin-bottom: 0;
 }
+
 input {
   padding: 1rem;
-  border-radius: 3rem;  
+  border-radius: 3rem;
   text-align: left;
   height: unset;
   border: unset;
 }
-::placeholder{
+
+::placeholder {
   font-size: 1.4rem;
 }
 
 @media screen and (max-width: 750px) {
-  .container{
+  .container {
     padding-top: 7rem;
     flex-direction: column;
     justify-content: space-between;
     width: 90%;
   }
-  .container > *{margin-bottom: 3rem;}
-}
-</style>
+
+  .container>* {
+    margin-bottom: 3rem;
+  }
+}</style>

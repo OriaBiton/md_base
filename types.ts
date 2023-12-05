@@ -34,6 +34,7 @@ interface FooterOptions {
 interface Location {
   address: string;
   geoName: number;
+  placeId: number;
   navigationUrl: string;
   accessibilityStatement: string;
 }
